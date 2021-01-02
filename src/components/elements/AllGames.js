@@ -14,6 +14,11 @@ const AllGames = ({ products }) => {
     setFilter(event.target.value)
   }
 
+  let gamesToDisplay = products
+  if (filter) {
+    gamesToDisplay = products.filter((game) => game.title.toLowerCase().includes(filter.toLowerCase()))
+  }
+
   return (
     <div>
       <StyledHeader>
@@ -25,10 +30,9 @@ const AllGames = ({ products }) => {
         </div>
       </StyledHeader>
       <DisplayGames products={products} filter={filter} />
-
       <StyledHome>
         {view === "all" &&
-          products.map((product) => (
+          gamesToDisplay.map((product) => (
             <NavLink to={"/game?id=" + product.id}>
               <div
                 className="game-item"

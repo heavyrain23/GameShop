@@ -1,5 +1,4 @@
 import React from "react"
-import ListGames from "./ListGames"
 
 const DisplayGames = ({ products, filter }) => {
   let gamesToDisplay = products
@@ -12,9 +11,11 @@ const DisplayGames = ({ products, filter }) => {
     return <div></div>
   }
 
+  const rows = () => gamesToDisplay.map((game) => <div game={game.title} key={game.id}></div>)
+
   return (
     <>
-      <ListGames products={gamesToDisplay} />
+      <div>{rows()}</div>
     </>
   )
 }
