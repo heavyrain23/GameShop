@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import AllGames from "./elements/AllGames"
+import UserContext from "./elements/User"
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -16,10 +17,14 @@ const App = () => {
       })
   }, [])
 
+  const user = {
+    favorites: ["Cyberpunk", "Call of duty"],
+  }
+
   return (
-    <div>
+    <UserContext.Provider value={user}>
       <AllGames products={products} />
-    </div>
+    </UserContext.Provider>
   )
 }
 
