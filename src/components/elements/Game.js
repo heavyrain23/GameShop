@@ -1,7 +1,6 @@
 import React, { useState, useContext, useReducer } from "react"
 import { StyledGame, StyledGameTitle } from "./../styles/StyledGame"
 import Card from "./Cart"
-import UserContext from "./User"
 import { GameContext } from "./AllGames"
 
 const Game = ({ products, id }) => {
@@ -9,17 +8,15 @@ const Game = ({ products, id }) => {
   const [view, setView] = useState("all")
 
   const GameItem = (id) => {
-    const user = useContext(UserContext)
-    const favorite = user.favorites
-
     const { setGame } = useContext(GameContext)
 
-    function update() {
+    function update(name, id) {
       setGame({
-        name: products[id].title,
-        gameId: { id },
+        name: name,
+        gameId: id,
       })
     }
+    console.log(update)
 
     return (
       <div>
@@ -30,7 +27,7 @@ const Game = ({ products, id }) => {
           </div>
           <div className="info_item">
             <h4 className="item_desc">{products[id].description}</h4>
-            <div onClick={() => update} className="game_button">
+            <div onClick={() => update(products[id].title, products[id].id)} className="game_button">
               <div className="game_button_text">Buy now</div>
               <div className="game_button_text">{products[id].price} $</div>{" "}
             </div>

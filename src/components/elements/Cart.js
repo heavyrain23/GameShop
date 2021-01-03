@@ -5,7 +5,7 @@ const Cart = ({ click, id, products }) => {
   //   return <div>Nothing was added</div>
   // }
   const { game } = useContext(GameContext)
-
+  console.log(game)
   return (
     <>
       <div>Cart</div>
