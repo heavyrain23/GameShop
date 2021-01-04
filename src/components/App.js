@@ -1,37 +1,41 @@
-import React, { useState, useEffect, createContext } from "react"
+import React, { useState, useEffect } from "react"
 import AllGames from "./elements/AllGames"
 import Game from "./elements/Game"
 import Cart from "./elements/Cart"
 import GamesContext from "./elements/GamesContext"
-import { BrowserRouter as Switch, Route } from "react-router-dom"
+import { NavLink, Route } from "react-router-dom"
+import axios from "axios"
+import { StyledHeader } from "./styles/StyledHeader"
 
 const App = () => {
   const [products, setProducts] = useState([])
-  console.log(products)
   useEffect(() => {
-    ;(async () => {
-      const result = await fetch("/goods")
-      const data = await result.json()
-
-      setProducts(data)
-      console.log(products)
-    })()
+    axios.get("/goods")
+         .then((response) => {
+            setProducts(response.data)})
+         .catch((err) => {
+            console.log(err)})
   }, [])
-  console.log(products)
+
+  const filterList = (event) => {
+    let value = event.target.value;
+    console.log("Filter will be hear!");
+    console.log("Inputed value is " + value);
+  }
 
   return (
     <GamesContext.Provider value={products}>
-      <Switch>
-        <Route path="/all">
-          <AllGames products={products} />
-        </Route>
-        <Route path="/game/id">
-          <Game />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-      </Switch>
+       <StyledHeader>
+        <div className="header-content">
+          <NavLink exact to={"/"}>Logo</NavLink>
+          <input onChange={filterList} />
+          <NavLink exact to={"/cart"}>Cart</NavLink>
+        </div>
+      </StyledHeader>
+
+      <Route exact path="/" children={<AllGames />} />
+      <Route exact path="/game/:id" children={<Game />}/>
+      <Route exact path="/cart" children={<Cart />}/>
     </GamesContext.Provider>
   )
 }

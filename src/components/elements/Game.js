@@ -1,43 +1,40 @@
-import React, { useState, useContext } from "react"
+import React, {  useContext } from "react"
+import { useParams } from "react-router";
 import { StyledGame, StyledGameTitle } from "./../styles/StyledGame"
-import Card from "./Cart"
-import { GameContext } from "./AllGames"
+import GamesContext from "./GamesContext"
 
-const Game = ({ products, id }) => {
-  const [click, setClick] = useState(0)
+const Game = () => {
+  const { id } = useParams();
+  const products  = useContext(GamesContext)
+  const product = products && products[id - 1];
 
-  const GameItem = (id) => {
-    const { setGame } = useContext(GameContext)
+  console.log({products, id, product});
 
-    function update(name, id) {
-      setGame({
-        name: name,
-        gameId: id,
-      })
-    }
-    console.log(update)
+  const addGame = (id) => {
+    console.log(`Adding game with id: ${id}`)
+  };
 
-    return (
-      <div>
-        <StyledGameTitle>{products[id].title}</StyledGameTitle>
-        <StyledGame>
-          <div className="image_item">
-            <img src={products[id].image} alt="" width="600px" />
+  return (
+    <>{product && 
+    <div>
+     
+      <StyledGameTitle>{product.title}</StyledGameTitle>
+      <StyledGame>
+        <div className="image_item">
+          <img src={"/images/" + product.image + ".png"} alt="" width="600px" />
+        </div>
+        <div className="info_item">
+          <h4 className="item_desc">{product.description}</h4>
+          <div onClick={() => addGame(id)} className="game_button">
+            <div className="game_button_text">Buy now</div>
+            <div className="game_button_text">{product.price} $</div>{" "}
           </div>
-          <div className="info_item">
-            <h4 className="item_desc">{products[id].description}</h4>
-            <div onClick={() => update(products[id].title, products[id].id)} className="game_button">
-              <div className="game_button_text">Buy now</div>
-              <div className="game_button_text">{products[id].price} $</div>{" "}
-            </div>
-          </div>
-        </StyledGame>
-        <Card click={click} id={id} products={products} />
-      </div>
-    )
-  }
-
-  return <>{products[id] && GameItem(id)}</>
+        </div>
+      </StyledGame>
+  
+    </div>}
+    </>
+  )
 }
 
 export default Game
