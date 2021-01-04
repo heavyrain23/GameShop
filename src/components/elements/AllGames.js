@@ -41,31 +41,29 @@ const AllGames = () => {
         </div>
       </StyledHeader>
 
-      <AllGamesContext.Consumer>
-        <DisplayGames products={products} filter={filter} />
+      <DisplayGames products={products} filter={filter} />
 
-        <GameContext.Provider value={{ game, setGame }}>
-          <StyledHome>
-            {gamesToDisplay.map((product) => (
-              <NavLink to={"/game?id=" + product.id}>
-                <div
-                  className="game-item"
-                  key={product.id}
-                  onClick={() => {
-                    setId(product.id - 1)
-                  }}
-                >
-                  <img src={product.image} alt="" width="300px" />
-                  <h1> {product.title}</h1>
-                  <h3>{product.genre}</h3>
-                  <h3>{product.price} $</h3> <br />
-                </div>
-              </NavLink>
-            ))}
-          </StyledHome>
-          <Game products={products} id={id} />}
-        </GameContext.Provider>
-      </AllGamesContext.Consumer>
+      <GameContext.Provider value={{ game, setGame }}>
+        <StyledHome>
+          {gamesToDisplay.map((product) => (
+            <NavLink to={"/game?id=" + product.id}>
+              <div
+                className="game-item"
+                key={product.id}
+                onClick={() => {
+                  setId(product.id - 1)
+                }}
+              >
+                <img src={product.image} alt="" width="300px" />
+                <h1> {product.title}</h1>
+                <h3>{product.genre}</h3>
+                <h3>{product.price} $</h3> <br />
+              </div>
+            </NavLink>
+          ))}
+        </StyledHome>
+        <Game products={products} id={id} />}
+      </GameContext.Provider>
     </div>
   )
 }
