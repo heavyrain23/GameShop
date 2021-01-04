@@ -1,11 +1,10 @@
-import React, { useState, useContext, useReducer } from "react"
+import React, { useState, useContext } from "react"
 import { StyledGame, StyledGameTitle } from "./../styles/StyledGame"
 import Card from "./Cart"
 import { GameContext } from "./AllGames"
 
 const Game = ({ products, id }) => {
   const [click, setClick] = useState(0)
-  const [view, setView] = useState("all")
 
   const GameItem = (id) => {
     const { setGame } = useContext(GameContext)

@@ -1,9 +1,10 @@
-import React, { useState, createContext, useReducer } from "react"
+import React, { useState, createContext, useReducer, useContext } from "react"
 import { StyledHome } from "./../styles/StyledHome"
 import { NavLink } from "react-router-dom"
 import Game from "./Game"
 import { StyledHeader } from "./../styles/StyledHeader"
 import DisplayGames from "./DisplayGames"
+import AllGamesContext from "./AllGames"
 
 export const GameContext = createContext()
 
@@ -11,11 +12,14 @@ function reducer(state, item) {
   return [...state, item]
 }
 
-const AllGames = ({ products }) => {
+const AllGames = () => {
   const [filter, setFilter] = useState("")
   const [id, setId] = useState("")
-  const [view, setView] = useState("all")
   const [game, setGame] = useReducer(reducer, [])
+
+  const { products } = useContext(AllGamesContext)
+
+  console.log(products)
 
   const filterEventHandler = (event) => {
     setFilter(event.target.value)
@@ -37,19 +41,18 @@ const AllGames = ({ products }) => {
         </div>
       </StyledHeader>
 
-      <DisplayGames products={products} filter={filter} />
+      <AllGamesContext.Consumer>
+        <DisplayGames products={products} filter={filter} />
 
-      <GameContext.Provider value={{ game, setGame }}>
-        <StyledHome>
-          {view === "all" &&
-            gamesToDisplay.map((product) => (
+        <GameContext.Provider value={{ game, setGame }}>
+          <StyledHome>
+            {gamesToDisplay.map((product) => (
               <NavLink to={"/game?id=" + product.id}>
                 <div
                   className="game-item"
                   key={product.id}
                   onClick={() => {
                     setId(product.id - 1)
-                    setView("gameId")
                   }}
                 >
                   <img src={product.image} alt="" width="300px" />
@@ -59,9 +62,10 @@ const AllGames = ({ products }) => {
                 </div>
               </NavLink>
             ))}
-        </StyledHome>
-        {view === "gameId" && <Game products={products} id={id} />}
-      </GameContext.Provider>
+          </StyledHome>
+          <Game products={products} id={id} />}
+        </GameContext.Provider>
+      </AllGamesContext.Consumer>
     </div>
   )
 }
