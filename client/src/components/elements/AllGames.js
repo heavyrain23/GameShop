@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import GamesContext from "./GamesContext"
 
 const AllGames = () => {
-  const products = useContext(GamesContext);
+  const {products} = useContext(GamesContext);
   
   return (
         <StyledHome>

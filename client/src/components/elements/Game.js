@@ -5,10 +5,11 @@ import GamesContext from "./GamesContext"
 
 const Game = () => {
   const { id } = useParams();
-  const products  = useContext(GamesContext)
+  const {products, cart, setToCart} = useContext(GamesContext);
   const product = products && products[id - 1];
+ 
   const addGame = (id) => {
-    console.log(`Adding game with id: ${id}`)
+    console.log(`Adding game with id: ${id}`);
   };
 
   return (

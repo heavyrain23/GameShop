@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useReducer } from "react"
 import AllGames from "./elements/AllGames"
 import Game from "./elements/Game"
 import Cart from "./elements/Cart"
@@ -9,6 +9,12 @@ import { StyledHeader } from "./styles/StyledHeader"
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const [cart, setToCart] = useReducer(reducer, [])
+
+  function reducer(state, item) {
+    return [...state, item]
+  }
+
   useEffect(() => {
     axios.get("/goods")
          .then((response) => {
@@ -18,13 +24,13 @@ const App = () => {
   }, [])
 
   const filterList = (event) => {
-    let value = event.target.value;
+    const value = event.target.value;
     console.log("Filter will be hear!");
     console.log("Inputed value is " + value);
   }
 
   return (
-    <GamesContext.Provider value={products}>
+    <GamesContext.Provider value={{products, cart, setToCart }}>
        <StyledHeader>
         <div className="header-content">
           <NavLink exact to={"/"}>Logo</NavLink>
