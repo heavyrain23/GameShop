@@ -14,6 +14,9 @@ const App = () => {
   const [filter, setFilter] = useState("")
 
   function reducer(state, item) {
+    if (item instanceof Array) {
+      return item
+    }
     return [...state, item]
   }
 
