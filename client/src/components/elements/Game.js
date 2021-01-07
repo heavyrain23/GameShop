@@ -5,7 +5,7 @@ import GamesContext from "./GamesContext"
 
 const Game = () => {
   const { id } = useParams()
-  const { products, cart, setToCart } = useContext(GamesContext)
+  const { products, cart, updateCart } = useContext(GamesContext)
   const product = products && products[id - 1]
 
   const addGame = (id) => {
@@ -17,7 +17,7 @@ const Game = () => {
     } else {
       // create quantity property and new obj to cart
       product.quantity = 1
-      setToCart(product)
+      updateCart({ type: "add", item: product })
     }
 
     console.log(checkingCart)

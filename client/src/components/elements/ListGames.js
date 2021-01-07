@@ -6,7 +6,6 @@ const ListGames = () => {
   let { filter, products } = useContext(GamesContext)
 
   let listToDisplay = products
-  console.log(filter)
   if (filter) {
     listToDisplay = products.filter((product) => product.title.toLowerCase().includes(filter.toLowerCase()))
   }
