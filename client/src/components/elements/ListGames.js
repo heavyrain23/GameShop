@@ -17,8 +17,8 @@ const ListGames = () => {
 
   const rows = () =>
     listToDisplay.map((game) => (
-      <NavLink exact to={"/game/" + game.id}>
-        <div key={game.title}>{game.title}</div>
+      <NavLink key={game.id} exact to={"/game/" + game.id}>
+        <div>{game.title}</div>
       </NavLink>
     ))
 

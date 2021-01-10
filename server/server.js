@@ -34,10 +34,3 @@ app.get("/goods", function (req, res) {
     res.send(result)
   })
 })
-
-const employee = { name: "siddiqui", location: "Canada" }
-connection.query("INSERT INTO employees SET ?", employee, (err, res) => {
-  if (err) throw err
-
-  console.log("Last insert ID:", res.insertId)
-})

@@ -16,13 +16,13 @@ function reducer(state, action) {
     case "add":
       return [...state, action.item]
     case "increase":
-      console.log(action.item)
       action.item.quantity++
       return [...state]
     case "decrease":
-      if (action.item.quantity >= 1) {
+      if (action.item.quantity > 0) {
         action.item.quantity--
       }
+
       return [...state]
     default:
       console.log(`Type: ${action.type} is incorrect`)
@@ -45,18 +45,11 @@ const App = () => {
       })
   }, [])
 
-  const filterList = (event) => {
-    setFilter(event.target.value)
-    console.log("Inputed value is " + filter)
-    console.log("cart")
-    console.log(cart)
-  }
-
   return (
     <>
       <GamesContext.Provider value={{ products, cart, updateCart, filter }}>
         <Header />
-        <input onChange={filterList} />
+        <input onChange={event => setFilter(event.target.value)} />
         <ListGames />
         <Route exact path="/" children={<AllGames />} />
         <Route exact path="/game/:id" children={<Game />} />

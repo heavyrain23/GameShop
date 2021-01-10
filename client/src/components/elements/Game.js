@@ -8,10 +8,11 @@ const Game = () => {
   const { products, cart, updateCart } = useContext(GamesContext)
   const product = products && products[id - 1]
 
-  const addGame = (id) => {
+  const addGame = () => {
     // checking for existing obj in array
-    const checkingCart = cart.find(({ title }) => title === product.title)
+    const checkingCart = cart.find(item => item.id === product.id)
     // if array contains same obj then prop.quantity increased by 1
+    
     if (checkingCart) {
       product.quantity = product.quantity + 1
     } else {
@@ -20,8 +21,6 @@ const Game = () => {
       updateCart({ type: "add", item: product })
     }
 
-    console.log(checkingCart)
-    console.log(`Adding game with id: ${id}`)
   }
 
   return (
@@ -35,7 +34,7 @@ const Game = () => {
             </div>
             <div className="info_item">
               <h4 className="item_desc">{product.description}</h4>
-              <div onClick={() => addGame(id)} className="game_button">
+              <div onClick={() => addGame()} className="game_button">
                 <div className="game_button_text">Buy now</div>
                 <div className="game_button_text">{product.price} $</div>
               </div>
