@@ -1,20 +1,22 @@
-import React, { useContext, useState } from "react"
-import GamesContext from "./GamesContext"
+import React, { useContext } from "react";
+import GamesContext from "./GamesContext";
+import CartClientFields from "./Cart_client_fields";
 
 const Cart = () => {
-  let { cart, updateCart } = useContext(GamesContext)
+  let { cart, updateCart } = useContext(GamesContext);
 
   // price counting
-  const oneGamePrices = cart.map((game) => game.price * game.quantity)
+  const oneGamePrices = cart.map((game) => game.price * game.quantity);
   const sumTotal = oneGamePrices
     .reduce(function (a, b) {
-      return a + b
+      return a + b;
     }, 0)
-    .toFixed(2)
+    .toFixed(2);
 
   return (
     <>
       <h1>Cart</h1>
+      <CartClientFields />
       <h2>Orders:</h2>
       {cart.length === 0 && <div>Cart is empty</div>}
       {cart.map((product) => (
@@ -32,7 +34,7 @@ const Cart = () => {
       <h2>Total price:</h2>
       <h2>{sumTotal}</h2>
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
