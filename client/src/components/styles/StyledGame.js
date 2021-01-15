@@ -1,17 +1,19 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledGame = styled.div`
   box-sizing: border-box;
   border-style: solid;
   border-color: #aca8a8;
   border-width: 1px;
-  max-width: 80%;
+  max-width: 70%;
   padding: 10px 10px;
   width: 100%;
   display: flex;
   margin: 0 auto;
+  flex-wrap: wrap;
 
   .info_item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,21 +22,24 @@ export const StyledGame = styled.div`
   }
 
   .image_item {
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .item_desc {
-    margin: 0;
-    font-size: 18px;
+    margin-top: 30px;
+    font-size: 15px;
     line-height: 25px;
     font-family: sans-serif;
-    font-weight: lighter;
+    font-weight: 600;
+    color: #56514a;
   }
 
   .game_button {
+    position: absolute;
+    top: 70%;
     cursor: pointer;
     display: flex;
     margin-top: 10%;
@@ -52,12 +57,14 @@ export const StyledGame = styled.div`
       font-family: sans-serif;
     }
   }
-`
+`;
 
 export const StyledGameTitle = styled.div`
-  width: 650px;
+  color: #56514a;
+  margin-left: 95px;
+  width: 400px;
   padding: 10px 10%;
   font-size: 40px;
   font-weight: bold;
   font-family: sans-serif;
-`
+`;

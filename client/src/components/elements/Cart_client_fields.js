@@ -30,6 +30,8 @@ const CartClientFields = () => {
 
   return (
     <div>
+      <p>Customer information</p>
+
       <p>Email</p>
       <input onChange={(event) => setEmail(event.target.value)} />
 

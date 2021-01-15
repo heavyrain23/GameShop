@@ -32,7 +32,7 @@ const Game = () => {
               <img src={"/images/" + product.image_name} alt="" width="400px" />
             </div>
             <div className="info_item">
-              <h4 className="item_desc">{product.description}</h4>
+              <div className="item_desc">{product.description}</div>
               <div onClick={() => addGame()} className="game_button">
                 <div className="game_button_text">Buy now</div>
                 <div className="game_button_text">{product.price} $</div>
