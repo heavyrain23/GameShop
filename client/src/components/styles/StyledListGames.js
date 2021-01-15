@@ -10,6 +10,7 @@ export const StyledListGames = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 25%;
+  z-index: 1000;
 
   .nav-link {
     text-decoration: none;
@@ -19,7 +20,7 @@ export const StyledListGames = styled.div`
   }
 
   div {
-    padding: 5px 0;
+    padding: 3px 0;
     border-top: 2px solid rgb(192, 25, 150);
     display: flex;
     flex-direction: column;
@@ -27,7 +28,7 @@ export const StyledListGames = styled.div`
     font-weight: bold;
   }
 
-  nav-link:hover {
-    background-color: rgb(192, 25, 150);
+  .nav-link:hover {
+    background-color: rgb(199, 198, 198);
   }
 `;

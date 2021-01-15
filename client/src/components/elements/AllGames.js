@@ -7,19 +7,21 @@ const AllGames = () => {
   const { products } = useContext(GamesContext);
 
   return (
-    <StyledHome>
-      {products &&
-        products.map((product) => (
-          <NavLink key={product.id} to={"/game/" + product.id}>
-            <div className="game-item">
-              <img src={"/images/" + product.image_name} alt="" width="250px" />
-              <h1> {product.title}</h1>
-              <h3>{product.genre}</h3>
-              <h3>{product.price} $</h3> <br />
-            </div>
-          </NavLink>
-        ))}
-    </StyledHome>
+    <div>
+      <StyledHome>
+        {products &&
+          products.map((product) => (
+            <NavLink className="nav-link" key={product.id} to={"/game/" + product.id}>
+              <div className="game-item">
+                <img src={"/images/" + product.image_name} alt="" height="350px" />
+                <div className="item-title"> {product.title}</div>
+                <div className="item-genre">{product.genre}</div>
+                <div className="item-price">{product.price} $</div> <br />
+              </div>
+            </NavLink>
+          ))}
+      </StyledHome>
+    </div>
   );
 };
 
