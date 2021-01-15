@@ -50,9 +50,6 @@ const App = () => {
     <>
       <GamesContext.Provider value={{ products, cart, updateCart, filter, setFilter }}>
         <Header />
-        <StyledInput>
-          <input value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Search..." />
-        </StyledInput>
         <ListGames />
         <Route exact path="/" children={<AllGames />} />
         <Route exact path="/game/:id" children={<Game />} />

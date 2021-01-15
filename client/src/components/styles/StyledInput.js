@@ -5,9 +5,9 @@ export const StyledInput = styled.div`
   justify-content: center;
 
   input {
-    margin-top: 10px;
-    width: 25%;
-    padding: 10px 0;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px 100px 10px 30px;
     font: 400 20px Arial;
     border: 3px solid rgb(192, 25, 150);
   }
