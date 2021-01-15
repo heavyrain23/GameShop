@@ -8,6 +8,7 @@ import axios from "axios";
 import ListGames from "./elements/ListGames";
 import Header from "./elements/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
+import { StyledInput } from "./styles/StyledInput";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -47,9 +48,11 @@ const App = () => {
 
   return (
     <>
-      <GamesContext.Provider value={{ products, cart, updateCart, filter }}>
+      <GamesContext.Provider value={{ products, cart, updateCart, filter, setFilter }}>
         <Header />
-        <input onChange={(event) => setFilter(event.target.value)} />
+        <StyledInput>
+          <input value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Search..." />
+        </StyledInput>
         <ListGames />
         <Route exact path="/" children={<AllGames />} />
         <Route exact path="/game/:id" children={<Game />} />

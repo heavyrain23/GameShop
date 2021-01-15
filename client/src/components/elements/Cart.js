@@ -21,7 +21,7 @@ const Cart = () => {
       {cart.length === 0 && <div>Cart is empty</div>}
       {cart.map((product) => (
         <div className="game-item">
-          <img src={"/images/" + product.image + ".png"} alt="" width="50px" />
+          <img src={"/images/" + product.image_name} alt="" width="50px" />
           <h2> {product.title}</h2>
           <h3>{product.price} $</h3>
           <h3>quantity :{product.quantity}</h3>

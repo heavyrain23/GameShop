@@ -12,7 +12,7 @@ const AllGames = () => {
         products.map((product) => (
           <NavLink key={product.id} to={"/game/" + product.id}>
             <div className="game-item">
-              <img src={"/images/" + product.image_name + ".png"} alt="" width="250px" />
+              <img src={"/images/" + product.image_name} alt="" width="250px" />
               <h1> {product.title}</h1>
               <h3>{product.genre}</h3>
               <h3>{product.price} $</h3> <br />

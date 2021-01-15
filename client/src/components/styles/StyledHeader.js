@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledHeader = styled.div`
   background: #a19f9f;
@@ -19,4 +19,4 @@ export const StyledHeader = styled.div`
       min-height: 0px;
     }
   }
-`
+`;

@@ -1,28 +1,33 @@
-import React, { useContext } from "react"
-import GamesContext from "./GamesContext"
-import { NavLink } from "react-router-dom"
+import React, { useContext } from "react";
+import GamesContext from "./GamesContext";
+import { NavLink } from "react-router-dom";
+import { StyledListGames } from "./../styles/StyledListGames";
 
 const ListGames = () => {
-  let { filter, products } = useContext(GamesContext)
+  let { filter, setFilter, products } = useContext(GamesContext);
 
-  let listToDisplay = products
+  let listToDisplay = products;
   if (filter) {
-    listToDisplay = products.filter((product) => product.title.toLowerCase().includes(filter.toLowerCase()))
+    listToDisplay = products.filter((product) => product.title.toLowerCase().includes(filter.toLowerCase()));
   }
 
   // Nothing found, or no filter.
   if (!filter || listToDisplay.length < 1) {
-    return <div></div>
+    return <div></div>;
   }
 
   const rows = () =>
     listToDisplay.map((game) => (
-      <NavLink key={game.id} exact to={"/game/" + game.id}>
+      <NavLink onClick={() => setFilter("")} className="nav-link" key={game.id} exact to={"/game/" + game.id}>
         <div>{game.title}</div>
       </NavLink>
-    ))
+    ));
 
-  return <div>{rows()}</div>
-}
+  return (
+    <StyledListGames>
+      <div>{rows()}</div>
+    </StyledListGames>
+  );
+};
 
-export default ListGames
+export default ListGames;
