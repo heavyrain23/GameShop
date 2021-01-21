@@ -8,7 +8,6 @@ import axios from "axios";
 import ListGames from "./elements/ListGames";
 import Header from "./elements/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
-import { StyledInput } from "./styles/StyledInput";
 
 function reducer(state, action) {
   switch (action.type) {

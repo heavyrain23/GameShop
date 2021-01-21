@@ -64,4 +64,9 @@ export const StyledHome = styled.div`
   .item-price:hover {
     background-color: rgb(192, 25, 150);
   }
+
+  @media (max-width: 782px) {
+    justify-content:center;
+    }
+  }
 `;

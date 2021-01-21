@@ -13,19 +13,17 @@ export const StyledGame = styled.div`
   flex-wrap: wrap;
 
   .info_item {
+    max-width: 50%;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px 20px;
-    width: 50%;
   }
 
   .image_item {
+    margin-right: 20px;
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .item_desc {
@@ -35,11 +33,11 @@ export const StyledGame = styled.div`
     font-family: sans-serif;
     font-weight: 600;
     color: #56514a;
+    margin-left: 30px;
   }
 
   .game_button {
-    position: absolute;
-    top: 70%;
+    
     cursor: pointer;
     display: flex;
     margin-top: 10%;
@@ -57,6 +55,39 @@ export const StyledGame = styled.div`
       font-family: sans-serif;
     }
   }
+
+  @media (max-width: 1388px) {
+    width: 70%;
+    
+    .item_desc {
+      width: 70%;
+    }
+
+    @media (max-width: 1275px) {
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: center;
+
+      .info_item {
+      width: 100%;
+      }
+
+      .item_desc {
+        width: 150%        
+      }
+
+      .image_item {
+        width: 100%;
+        display: contents;    
+      }
+  }
+
+  @media (max-width: 620px) {
+    .image_item img {
+      width: 80%;
+        
+    }
+  }
 `;
 
 export const StyledGameTitle = styled.div`
@@ -67,4 +98,8 @@ export const StyledGameTitle = styled.div`
   font-size: 40px;
   font-weight: bold;
   font-family: sans-serif;
+
+  @media (max-width: 1275px) {
+    margin: 0 auto;
+  }
 `;
