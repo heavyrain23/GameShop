@@ -2,30 +2,74 @@ import styled from "styled-components";
 
 export const StyledCart = styled.div`
   max-width: 1160px;
-  width: 100%;
-  margin: 0px 20%;
+  margin: 70px 20%;
   display: flex;
   border: 1px solid black;
   position: relative;
+
+  .cart-title {
+    position: absolute;
+    top: -85px;
+    left: 0;
+    color: #56514a;
+    width: 700px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
 
   .cart-inputs {
     justify-content: center;
     display: flex;
     width: 70%;
-    border: 1px solid black;
+    padding: 20px;
+
+    .title {
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      text-align: left;
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    input {
+      width: 200px;
+      display: flex;
+    }
+
+    button {
+      display: flex;
+      margin: 25px auto;
+      padding: 5px 15px;
+    }
   }
 
   .order-item {
     width: 30%;
+    border-left: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    h2 {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .cart-item {
     position: relative;
+    margin-bottom: 5px;
     width: 100%;
     border: 1px solid black;
     display: flex;
     flex-direction: row;
-    background-color: rgb(189 188 188 / 18%);
+    background-color: rgb(193 193 193 / 18%);
   }
 
   .orders-image {
@@ -34,33 +78,21 @@ export const StyledCart = styled.div`
   }
 
   .orders-info {
-    width: 70%;
-    display: flex;
-    justify-content: flex-start;
+    width: 200px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
   }
-
-  .orders-info h2,
-  h3 {
-    font-size: 20px;
-    margin: 0;
-    margin-left: 20px;
-    margin-top: 10px;
-  }
-
-  .orders-info h3 {
-    font-size: 20px;
+  .product-price {
+    margin-top: 5px;
   }
 
   .orders-quantity {
-    display: flex;
-
+    min-width: 100px;
     position: absolute;
-    right: 90px;
-    bottom: 10px;
-  }
-
-  .orders-quantity h3 {
-    font-weight: 100;
+    bottom: 0;
+    right: -20px;
   }
 
   .orders-quantity button {
@@ -69,5 +101,46 @@ export const StyledCart = styled.div`
     margin: 5px;
     border-radius: 5px;
     color: white;
+  }
+
+  .remove-button {
+    justify-content: center;
+    display: flex;
+    width: 40%;
+    padding: 5px;
+    margin: 0 auto;
+  }
+
+  .total-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+  }
+
+  @media (max-width: 1186px) {
+    .cart-item {
+      height: 120px;
+    }
+
+    .orders-info {
+      width: 100px;
+      font-size: 15px;
+    }
+
+    .orders-quantity {
+      font-size: 15px;
+    }
+
+    .orders-image {
+      width: 40%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .orders-image {
+      width: 0;
+    }
   }
 `;

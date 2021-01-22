@@ -16,8 +16,8 @@ const Cart = () => {
 
   return (
     <>
-      <h1>Cart</h1>
       <StyledCart>
+        <h1 className="cart-title">Cart</h1>
         <div className="cart-inputs">
           <CartClientFields />
         </div>
@@ -29,20 +29,28 @@ const Cart = () => {
             <div className="cart-item">
               <img className="orders-image" src={"/images/" + product.image_name} alt="" width="40px" />
               <div className="orders-info">
-                <h2> {product.title}</h2>
-                <h3>{product.price}$</h3>
+                <div className="product-title"> {product.title}</div>
+                <div className="product-price">{product.price}$</div>
               </div>
               <div className="orders-quantity">
                 <button onClick={() => updateCart({ type: "increase", item: product })}>+</button>
                 <button onClick={() => updateCart({ type: "decrease", item: product })}>-</button>
-                <h3>quantity :{product.quantity}</h3>
+                <div>quantity :{product.quantity}</div>
               </div>
             </div>
           ))}
           <br />
-          <button onClick={() => updateCart({ type: "clear" })}>Remove</button>
-          <h2>Total price:</h2>
-          <h2>{sumTotal}</h2>
+          {cart.length > 0 && (
+            <div>
+              <button className="remove-button" onClick={() => updateCart({ type: "clear" })}>
+                Remove all
+              </button>
+              <div className="total-container">
+                <div>Total price:</div>
+                <div>{sumTotal}</div>
+              </div>
+            </div>
+          )}
         </div>
       </StyledCart>
     </>

@@ -93,7 +93,7 @@ export const StyledGame = styled.div`
 export const StyledGameTitle = styled.div`
   color: #56514a;
   margin-left: 95px;
-  width: 400px;
+  width: 700px;
   padding: 10px 10%;
   font-size: 40px;
   font-weight: bold;

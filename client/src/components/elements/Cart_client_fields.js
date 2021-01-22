@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import GamesContext from "./GamesContext";
+import Notification from "./Notification";
 
 const CartClientFields = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const CartClientFields = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [adress, setAdress] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [notification, setNotification] = useState("");
 
   const { cart } = useContext(GamesContext);
 
@@ -28,9 +30,16 @@ const CartClientFields = () => {
     console.log(res.data);
   }
 
+  const sendNotification = () => {
+    setNotification(<Notification />);
+    setTimeout(() => setNotification(""), 3000);
+  };
+
   return (
     <div>
-      <p>Customer information</p>
+      <div>{notification}</div>
+
+      <p className="title">Customer information</p>
 
       <p>Email</p>
       <input onChange={(event) => setEmail(event.target.value)} />
@@ -50,7 +59,14 @@ const CartClientFields = () => {
       <p>Postal code</p>
       <input onChange={(event) => setPostalCode(event.target.value)} />
 
-      <button onClick={() => makePostRequest()}>Send</button>
+      <button
+        onClick={() => {
+          makePostRequest();
+          sendNotification();
+        }}
+      >
+        Send
+      </button>
     </div>
   );
 };

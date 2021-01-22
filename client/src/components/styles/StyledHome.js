@@ -21,7 +21,7 @@ export const StyledHome = styled.div`
   }
 
   .game-item:hover {
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #aca8a8;
     transition: 0.5s;
   }
 
@@ -54,7 +54,7 @@ export const StyledHome = styled.div`
     width: 350px;
     font-size: 25px;
     margin-top: 20px;
-    background-color: #636565e8;
+    background-color: #afb4b4e8;
     color: white;
     font-weight: 100;
     padding: 5px;
