@@ -123,9 +123,9 @@ async function createProductsTable(connection) {
 async function createCustomersTable(connection) {
   const sql = `CREATE TABLE IF NOT EXISTS customers (
   id INT(100) AUTO_INCREMENT,
-  first_name VARCHAR(100) NOT NULL,
-  second_name VARCHAR(100) NOT NULL,
-  phone_number INT(20) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  second_name VARCHAR(50) NOT NULL,
+  phone_number INT(30) NOT NULL,
   adress VARCHAR(100) NOT NULL,
   postal_code CHAR(5) NOT NULL,
   email VARCHAR(50) NOT NULL,

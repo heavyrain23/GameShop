@@ -10,6 +10,7 @@ export const StyledGame = styled.div`
   width: 100%;
   display: flex;
   margin: 0 auto;
+  margin-bottom: 200px;
   flex-wrap: wrap;
 
   .info_item {
@@ -93,7 +94,7 @@ export const StyledGame = styled.div`
 export const StyledGameTitle = styled.div`
   color: #56514a;
   margin-left: 95px;
-  width: 700px;
+  width: 500px;
   padding: 10px 10%;
   font-size: 40px;
   font-weight: bold;

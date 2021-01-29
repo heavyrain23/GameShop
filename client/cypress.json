@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "market": {
+    "userName": "market",
+    "password": "room483",
+    "server": "localhost",
+    "options": {
+      "database": "market",
+      "encrypt": true,
+      "rowCollectionOnRequestCompletion": true
+    }
+  }
+}

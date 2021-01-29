@@ -26,7 +26,7 @@ const Cart = () => {
           <h2>Orders:</h2>
           {cart.length === 0 && <div>Cart is empty</div>}
           {cart.map((product) => (
-            <div className="cart-item">
+            <div className="cart-item" key={product.id}>
               <img className="orders-image" src={"/images/" + product.image_name} alt="" width="40px" />
               <div className="orders-info">
                 <div className="product-title"> {product.title}</div>

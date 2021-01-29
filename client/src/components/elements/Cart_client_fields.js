@@ -1,72 +1,79 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import GamesContext from "./GamesContext";
-import Notification from "./Notification";
+import { StyledNotification } from "../styles/StyledNotification";
 
 const CartClientFields = () => {
-  const [email, setEmail] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [secondName, setSecondName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [adress, setAdress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
   const [notification, setNotification] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    firstName: "",
+    secondName: "",
+    phoneNumber: "",
+    adress: "",
+    postalCode: "",
+  });
+
+  const set = (propName) => {
+    return ({ target: { value } }) => {
+      setValues((oldValues) => ({ ...oldValues, [propName]: value }));
+    };
+  };
 
   const { cart } = useContext(GamesContext);
 
-  async function makePostRequest() {
+  async function makePostRequest(event) {
+    event.preventDefault();
     const newCustoumer = {
-      firstName,
-      secondName,
-      phoneNumber,
-      email,
-      adress,
-      postalCode,
+      firstName: values.firstName,
+      secondName: values.secondName,
+      phoneNumber: values.phoneNumber,
+      email: values.email,
+      adress: values.adress,
+      postalCode: values.postalCode,
       orders: cart.map((x) => ({ productId: x.id, quantity: x.quantity })),
     };
+    console.log([values]);
 
-    console.log(newCustoumer);
-    let res = await axios.post("/customers", newCustoumer);
-    console.log(res.data);
+    if (newCustoumer.orders.length === 0) {
+      sendNotification("YOUR CART IS EMPTY :C");
+    } else {
+      sendNotification("YOUR ORDER IS ACCEPTED C:");
+      let res = await axios.post("/customers", newCustoumer);
+    }
   }
 
-  const sendNotification = () => {
-    setNotification(<Notification />);
-    setTimeout(() => setNotification(""), 3000);
+  const sendNotification = (text) => {
+    setNotification(text);
+    setTimeout(() => setNotification(""), 5000);
   };
 
   return (
     <div>
-      <div>{notification}</div>
+      <StyledNotification>{notification}</StyledNotification>
+      <form onSubmit={makePostRequest}>
+        <p className="title">Customer information</p>
 
-      <p className="title">Customer information</p>
+        <p>*Email</p>
+        <input type="text" value={values.email} required minLength="5" onChange={set("email")} />
 
-      <p>Email</p>
-      <input onChange={(event) => setEmail(event.target.value)} />
+        <p>*First name</p>
+        <input type="text" value={values.firstName} required minLength="3" onChange={set("firstName")} />
 
-      <p>First name</p>
-      <input onChange={(event) => setfirstName(event.target.value)} />
+        <p>*Second name</p>
+        <input type="text" value={values.secondName} required minLength="3" onChange={set("secondName")} />
 
-      <p>Second name</p>
-      <input onChange={(event) => setSecondName(event.target.value)} />
+        <p>*Phone Number</p>
+        <input type="number" value={values.phoneNumber} required minLength="5" onChange={set("phoneNumber")} />
 
-      <p>Phone Number</p>
-      <input onChange={(event) => setPhoneNumber(event.target.value)} />
+        <p>*Adress</p>
+        <input type="text" value={values.adress} required minLength="5" onChange={set("adress")} />
 
-      <p>Adress</p>
-      <input onChange={(event) => setAdress(event.target.value)} />
+        <p>*Postal code</p>
+        <input type="number" value={values.postalCode} required minLength="5" onChange={set("postalCode")} />
 
-      <p>Postal code</p>
-      <input onChange={(event) => setPostalCode(event.target.value)} />
-
-      <button
-        onClick={() => {
-          makePostRequest();
-          sendNotification();
-        }}
-      >
-        Send
-      </button>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };

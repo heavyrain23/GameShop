@@ -8,6 +8,7 @@ import axios from "axios";
 import ListGames from "./elements/ListGames";
 import Header from "./elements/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
+import Footer from "./elements/Footer";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -54,6 +55,7 @@ const App = () => {
         <Route exact path="/game/:id" children={<Game />} />
         <Route exact path="/cart" children={<Cart />} />
       </GamesContext.Provider>
+      <Footer />
       <GlobalStyle />
     </>
   );

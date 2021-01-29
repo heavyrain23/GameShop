@@ -6,13 +6,14 @@ export const StyledCart = styled.div`
   display: flex;
   border: 1px solid black;
   position: relative;
+  margin-bottom: 190px;
 
   .cart-title {
     position: absolute;
     top: -85px;
     left: 0;
     color: #56514a;
-    width: 700px;
+    width: 400px;
     font-size: 40px;
     font-weight: bold;
     font-family: sans-serif;
@@ -38,6 +39,7 @@ export const StyledCart = styled.div`
     }
 
     input {
+      background-color: ${(props) => props.warningInputColor || "white"};
       width: 200px;
       display: flex;
     }
@@ -113,7 +115,7 @@ export const StyledCart = styled.div`
 
   .total-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 20px;
     font-weight: 600;
     margin: 10px;
