@@ -4,7 +4,6 @@ export const StyledCart = styled.div`
   max-width: 1160px;
   margin: 70px 20%;
   display: flex;
-  border: 1px solid black;
   position: relative;
   margin-bottom: 190px;
 
@@ -16,7 +15,6 @@ export const StyledCart = styled.div`
     width: 400px;
     font-size: 40px;
     font-weight: bold;
-    font-family: sans-serif;
   }
 
   .cart-inputs {
@@ -24,6 +22,9 @@ export const StyledCart = styled.div`
     display: flex;
     width: 70%;
     padding: 20px;
+    margin-right: 5px;
+    border-radius: 10px;
+    background: white;
 
     .title {
       font-weight: bold;
@@ -39,8 +40,8 @@ export const StyledCart = styled.div`
     }
 
     input {
-      background-color: ${(props) => props.warningInputColor || "white"};
-      width: 200px;
+      background-color: white;
+      width: 300px;
       display: flex;
     }
 
@@ -48,17 +49,19 @@ export const StyledCart = styled.div`
       display: flex;
       margin: 25px auto;
       padding: 5px 15px;
+      border-radius: 5px;
     }
   }
 
   .order-item {
     width: 30%;
-    border-left: 1px solid black;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 10px;
+    background: white;
 
     h2 {
-      margin-top: 30px;
+      margin-top: 25px;
       display: flex;
       justify-content: center;
     }
@@ -68,10 +71,10 @@ export const StyledCart = styled.div`
     position: relative;
     margin-bottom: 5px;
     width: 100%;
-    border: 1px solid black;
     display: flex;
     flex-direction: row;
     background-color: rgb(193 193 193 / 18%);
+    border-radius: 5px;
   }
 
   .orders-image {
@@ -94,7 +97,7 @@ export const StyledCart = styled.div`
     min-width: 100px;
     position: absolute;
     bottom: 0;
-    right: -20px;
+    right: 0px;
   }
 
   .orders-quantity button {
@@ -111,6 +114,7 @@ export const StyledCart = styled.div`
     width: 40%;
     padding: 5px;
     margin: 0 auto;
+    border-radius: 5px;
   }
 
   .total-container {

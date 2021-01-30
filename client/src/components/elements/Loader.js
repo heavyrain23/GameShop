@@ -9,7 +9,7 @@ export const StyledLoader = styled.div`
 const Loader = () => {
   return (
     <StyledLoader>
-      <img src={"/loader.gif"} alt="" width="80px" />
+      <img src={"/loader.svg"} alt="" width="200px" />
     </StyledLoader>
   );
 };
