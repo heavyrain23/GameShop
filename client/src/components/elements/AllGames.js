@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StyledHome } from "./../styles/StyledHome";
 import { NavLink } from "react-router-dom";
 import GamesContext from "./GamesContext";
+import Loader from "./Loader";
 
 const AllGames = () => {
   const { products } = useContext(GamesContext);
