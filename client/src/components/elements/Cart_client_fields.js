@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import GamesContext from "./GamesContext";
-import { StyledNotification } from "../styles/StyledNotification";
+import Notification from "./Notification";
 
 const CartClientFields = () => {
-  const [notification, setNotification] = useState("");
+  const { cart } = useContext(GamesContext);
+  const [notification, setNotification] = useState(null);
   const [values, setValues] = useState({
     email: "",
     firstName: "",
@@ -20,8 +21,6 @@ const CartClientFields = () => {
     };
   };
 
-  const { cart } = useContext(GamesContext);
-
   async function makePostRequest(event) {
     event.preventDefault();
     const newCustoumer = {
@@ -33,7 +32,6 @@ const CartClientFields = () => {
       postalCode: values.postalCode,
       orders: cart.map((x) => ({ productId: x.id, quantity: x.quantity })),
     };
-    console.log([values]);
 
     if (newCustoumer.orders.length === 0) {
       sendNotification("YOUR CART IS EMPTY :C");
@@ -45,12 +43,13 @@ const CartClientFields = () => {
 
   const sendNotification = (text) => {
     setNotification(text);
-    setTimeout(() => setNotification(""), 5000);
+    setTimeout(() => setNotification(null), 5000);
   };
 
   return (
     <div>
-      <StyledNotification>{notification}</StyledNotification>
+      <Notification text={notification} />
+
       <form onSubmit={makePostRequest}>
         <p className="title">Customer information</p>
 
