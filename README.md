@@ -1,22 +1,22 @@
 # GameShop fullstack app
 
-This project is representation of online shop system, which provides an opportunity to purchase, view games, perform a personal registration, login, and logout system.
+This project is representation of the online shop system, which gives you a chance purchase and view games, perform a personal registration, login, and logout system.
 This project is Single Page Application built on React and running on the Node.js. 
 
 Also, you can see a deployed version by follow this link: https://vigorous-bhabha-00a5ce.netlify.app/#/
 
 ## Application features
-The application uses following features:
-*	Display a list of pre-defined games.
-*	Interactive live search by game name
-*	Ability to open a current game.
-*	Adding items to cart
-*	View to cart 
-*	Manipulation with added items to cart like increase or decrease items quantity by one.
-*	Delete all added items from cart.
-*	Fill the fields and make an order.
-*	Registration system
-*	Login and logout system
+The application has the following features:
+*	Displaying a list of pre-defined games.
+*	Interactive live search by name of the game.
+*	Opening the current game.
+*	Adding items to the purchase cart
+*	Viewing the purchase cart 
+* Increasing and decreasing items of the cart
+* Removing all added items from the cart.
+* Making an order.
+*	Registration 
+*	Login and logout 
 
 ## Technologies
 Following tech stack of web technologies were used in this project:
